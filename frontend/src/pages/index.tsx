@@ -1,46 +1,21 @@
 import Search from "@/components/Search/Search";
 import CountryCard from "@/components/CountryCard/CountryCard";
+import { useCountriesQuery } from "@/types/graphql";
 
 export default function Home() {
-  const countries = [
-    {
-      id: "1",
-      name: "France",
-      emoji: "🇫🇷",
-    },
-    {
-      id: "1",
-      name: "China",
-      emoji: "🇫🇷",
-    },
-    {
-      id: "1",
-      name: "Canada",
-      emoji: "🇫🇷",
-    },
-    {
-      id: "1",
-      name: "Australia",
-      emoji: "🇫🇷",
-    },
-    {
-      id: "1",
-      name: "Kenya",
-      emoji: "🇫🇷",
-    },
-    {
-      id: "1",
-      name: "Brazil",
-      emoji: "🇫🇷",
-    },
-  ];
+  const { data } = useCountriesQuery();
+
   return (
     <>
       <Search />
       <section className="countries-section">
-        {countries.map((country) => (
-          <CountryCard data={country} />
-        ))}
+        {data?.countries.length > 0 ? (
+          data?.countries.map((country) => (
+            <CountryCard key={country.id} data={country} />
+          ))
+        ) : (
+          <p>rien à affficher</p>
+        )}
       </section>
     </>
   );

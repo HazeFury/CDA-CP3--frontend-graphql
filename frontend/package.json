@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen --config codegen.yml --watch"
+    "generate": "graphql-codegen --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.10.2",
@@ -21,11 +21,11 @@
     "typescript": "5.2.2",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
-    "@graphql-codegen/cli": "3.2.2",
-    "@graphql-codegen/introspection": "3.0.1",
-    "@graphql-codegen/typescript": "3.0.2",
-    "@graphql-codegen/typescript-operations": "3.0.2",
-    "@graphql-codegen/typescript-react-apollo": "3.3.7",
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.1.0",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31"
   }
