@@ -1,4 +1,4 @@
-import Search from "@/components/Search/Search";
+import AddCountry from "@/components/AddCountry/AddCountry";
 import CountryCard from "@/components/CountryCard/CountryCard";
 import { useCountriesQuery } from "@/types/graphql";
 
@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <Search />
+      <AddCountry />
       <section className="countries-section">
         {data?.countries.length > 0 ? (
           data?.countries.map((country) => (

@@ -13,11 +13,14 @@ export default function Country() {
 
   return (
     <section className="country-page">
-      <p>
-        {data?.country.name} ({data?.country.code})
-      </p>
       <p>{data?.country.emoji}</p>
-      <p>{data?.country.continent?.name}</p>
+      <p>
+        name : {data?.country.name} ({data?.country.code})
+      </p>
+      <p>
+        continent :{" "}
+        {data?.country.continent?.name ? data?.country.continent?.name : "Unknown"}
+      </p>
     </section>
   );
 }
