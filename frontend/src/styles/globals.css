@@ -27,6 +27,18 @@ body {
   flex-wrap: wrap;
 }
 
+.country-page {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.country-page p {
+  margin: 10px 0;
+}
+
 @media screen and (max-width: 980px) {
   .countries-section {
     padding: 10px 10px;

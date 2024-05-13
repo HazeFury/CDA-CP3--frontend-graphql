@@ -4,38 +4,33 @@ import {
   useAddCountryMutation,
   NewCountryInput,
 } from "@/types/graphql";
+import { FormEvent, useState } from "react";
 
 export default function Search() {
   const { data: continent } = useContinentsQuery();
 
-  //   const [addNewCountry] = useAddCountryMutation();
+  const [addNewCountry] = useAddCountryMutation();
 
-  //   const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     const formData = new FormData(e.currentTarget);
+  const [error, setError] = useState("");
 
-  //     const data = Object.fromEntries(formData);
-  //     if (data.name && data.code && data.emoji) {
-  //       addNewCountry({
-  //         variables: {
-  //           data: {
-  //             name: data.name as string,
-  //             code: data.code as string,
-  //             emoji: data.emoji as string,
-  //             continent: data.continent as string | undefined,
-  //           },
-  //         },
-  //       });
-  //     } else {
-  //       //   toast({
-  //       //     title: "Champ incomplet !",
-  //       //     variant: "destructive",
-  //       //   });
-  //     }
-  //   };
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    const formJSON: any = Object.fromEntries(formData.entries());
+    setError("");
+    try {
+      if (formJSON.name && formJSON.code && formJSON.emoji) {
+        await addNewCountry({ variables: { data: { ...formJSON } } });
+      }
+    } catch (err) {
+      console.error(err);
+      setError("une erreur s'est produite");
+    }
+  };
 
   return (
-    <form className={styles.search_container}>
+    <form onSubmit={handleSubmit} className={styles.search_container}>
       <div className={styles.input_container}>
         <label htmlFor="name">Name</label>
         <input type="text" name="name" id="name" />
@@ -48,7 +43,7 @@ export default function Search() {
         <label htmlFor="code">Code</label>
         <input type="text" name="code" id="code" />
       </div>
-      <div className={styles.input_container}>
+      {/* <div className={styles.input_container}>
         <label htmlFor="continent">Continent</label>
         <select
           name="continent"
@@ -61,7 +56,8 @@ export default function Search() {
             </option>
           ))}
         </select>
-      </div>
+      </div> */}
+      <p>{error}</p>
       <button className={styles.search_btn}>Add</button>
     </form>
   );
