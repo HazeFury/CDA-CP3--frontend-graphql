@@ -1,0 +1,17 @@
+.header_container {
+  background-color: #f7146b;
+  height: 150px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.header_link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  margin: 20px auto;
+}
